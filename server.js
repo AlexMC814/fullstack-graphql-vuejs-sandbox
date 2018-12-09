@@ -21,11 +21,6 @@ mongoose
   })
   .catch(err => console.log(err));
 
-const todos = [
-  { task: 'Wash car', completed: false },
-  { task: 'Clean floor', completed: true }
-];
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
