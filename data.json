@@ -1,0 +1,26 @@
+[
+  {
+    "categories": ["Art"],
+    "title": "Mona Lisa",
+    "imageUrl": "https://images.duckduckgo.com/iu/?u=http%2Fwww.readingpublicmuseum.org%2Fexhibit_secrets-of-mona-lisa-4.jpg&f=1",
+    "description": "A painting"
+  },
+  {
+    "categories": ["Art"],
+    "title": "Mona Lisa",
+    "imageUrl": "https://images.duckduckgo.com/iu/?u=http%2Fwww.readingpublicmuseum.org%2Fexhibit_secrets-of-mona-lisa-4.jpg&f=1",
+    "description": "A painting"
+  },
+  {
+    "categories": ["Furniture"],
+    "title": "Credenza",
+    "imageUrl": "https://images.createandbarrel.com/is/image/Crate/ClybournIICredenza3QF16/?$web_zoom_furn_av$&180802085137&wid=1008&hel=567",
+    "description": "A piece of furniture I want to buy"
+  },
+  {
+    "categories": ["Art", "Food"],
+    "title": "Big Boolshit",
+    "imageUrl": "https://images.duckduckgo.com/iu/?u=http%2Fwww.readingpublicmuseum.org%2Fexhibit_secrets-of-mona-lisa-4.jpg&f=1",
+    "description": "A painting"
+  }
+]

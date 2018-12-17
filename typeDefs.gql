@@ -1,35 +1,42 @@
 type User {
-  _id: ID
-  username: String! @unique
-  email: String!
-  password: String!
-  avatar: String
-  joinDate: String
-  favourites: [Post]
+    _id: ID
+    username: String! @unique
+    email: String!
+    password: String!
+    avatar: String
+    joinDate: String
+    favourites: [Post]
 }
 
 type Post {
-  title: String!
-  imageUrl: String!
-  categories: [String]!
-  description: String!
-  createdDate: String
-  likes: Int
-  createdBy: User!
-  messages: [Message]
+    title: String!
+    imageUrl: String!
+    categories: [String]!
+    description: String!
+    createdDate: String
+    likes: Int
+    createdBy: User!
+    messages: [Message]
 }
 
 type Message {
-  _id: ID
-  messageBody: String!
-  messageDate: String
-  messageUser: User!
+    _id: ID
+    messageBody: String!
+    messageDate: String
+    messageUser: User!
 }
 
 type Query {
-  getUser: User
+    getPosts: [Post]
 }
 
 type Mutation {
-  signUpUser(username: String!, email: String!, password: String!): User!
+    addPost(
+        title: String!
+        imageUrl: String!
+        categories: [String]!
+        description: String!
+        creatorId: ID!
+    ): Post!
+    signUpUser(username: String!, email: String!, password: String!): User!
 }
