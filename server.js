@@ -15,25 +15,25 @@ const Post = require('./models/Post');
 
 // connect to mlab db
 mongoose
-  .connect(
-    process.env.MONGO_URI,
-    { useNewUrlParser: true }
-  )
-  .then(() => {
-    console.log('DB CONNECTED');
-  })
-  .catch(err => console.log(err));
+    .connect(
+        process.env.MONGO_URI,
+        { useNewUrlParser: true }
+    )
+    .then(() => {
+        console.log('DB CONNECTED');
+    })
+    .catch(err => console.log(err));
 
 // Create Appollo/GraphQL server using typeDefs, resolvers and context object
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: {
-    User,
-    Post
-  }
+    typeDefs,
+    resolvers,
+    context: {
+        User,
+        Post,
+    },
 });
 
 server.listen().then(({ url }) => {
-  console.log(`Server is listening on ${url}`);
+    console.log(`Server is listening on ${url}`);
 });
