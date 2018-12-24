@@ -15,6 +15,11 @@
           </v-list-tile-action>
           <v-list-tile-content>{{item.title}}</v-list-tile-content>
         </v-list-tile>
+        <v-list-tile v-if="user" @click="handleSignoutUser">
+          <v-list-tile-action>
+            <v-icon>fa-sign-out-alt</v-icon>
+          </v-list-tile-action>Sign Out
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
@@ -39,6 +44,20 @@
           <v-icon left class="hidden-sm-only">{{item.icon}}</v-icon>
           {{item.title}}
         </v-btn>
+
+        <!-- Profile button -->
+        <v-btn flat to="/profile" v-if="user">
+          <v-icon class="hidden-sm-only" left>fa-user</v-icon>
+          <v-badge right color="blue darken-2">
+            <!-- <span slot="badge">1</span> -->
+            Profile
+          </v-badge>
+        </v-btn>
+
+        <!-- SignOut button -->
+        <v-btn flat v-if="user" @click="handleSignoutUser">
+          <v-icon class="hidden-sm-only" left>fa-sign-out-alt</v-icon>Sign Out
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <main>
@@ -51,6 +70,7 @@
   </v-app>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "App",
   data() {
@@ -59,22 +79,39 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["user"]),
     horizontalNavItems() {
-      return [
+      let items = [
         { icon: "fa-comment-alt", title: "Posts", link: "/posts" },
         { icon: "fa-lock-open", title: "Sign In", link: "/signin" },
-        { icon: "fa-pencil-alt", title: "Sign Up", link: "/signup" }
+        { icon: "fa-user-plus", title: "Sign Up", link: "/signup" }
       ];
+      if (this.user) {
+        items = [{ icon: "fa-comment-alt", title: "Posts", link: "/posts" }];
+      }
+
+      return items;
     },
     sideNavItems() {
-      return [
+      let items = [
         { icon: "fa-comment-alt", title: "Posts", link: "/posts" },
         { icon: "fa-lock-open", title: "Sign In", link: "/signin" },
-        { icon: "fa-pencil-alt", title: "Sign Up", link: "/signup" }
+        { icon: "fa-user-plus", title: "Sign Up", link: "/signup" }
       ];
+      if (this.user) {
+        items = [
+          { icon: "fa-comment-alt", title: "Posts", link: "/posts" },
+          { icon: "fa-plus", title: "Create Post", link: "/post/add" },
+          { icon: "fa-user", title: "Profile", link: "/profile" }
+        ];
+      }
+      return items;
     }
   },
   methods: {
+    handleSignoutUser() {
+      this.$store.dispatch("signoutUser");
+    },
     toggleSideNav() {
       this.sideNav = !this.sideNav;
     }
